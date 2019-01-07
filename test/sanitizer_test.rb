@@ -1,5 +1,5 @@
 require "minitest/autorun"
-require "rails-html-sanitizer"
+require "jets-html-sanitizer"
 require "rails/dom/testing/assertions/dom_assertions"
 
 class SanitizersTest < Minitest::Test
@@ -7,21 +7,21 @@ class SanitizersTest < Minitest::Test
 
   def test_sanitizer_sanitize_raises_not_implemented_error
     assert_raises NotImplementedError do
-      Rails::Html::Sanitizer.new.sanitize('')
+      Jets::Html::Sanitizer.new.sanitize('')
     end
   end
 
   def test_sanitize_nested_script
-    sanitizer = Rails::Html::WhiteListSanitizer.new
+    sanitizer = Jets::Html::WhiteListSanitizer.new
     assert_equal '&lt;script&gt;alert("XSS");&lt;/script&gt;', sanitizer.sanitize('<script><script></script>alert("XSS");<script><</script>/</script><script>script></script>', tags: %w(em))
   end
 
   def test_sanitize_nested_script_in_style
-    sanitizer = Rails::Html::WhiteListSanitizer.new
+    sanitizer = Jets::Html::WhiteListSanitizer.new
     assert_equal '&lt;script&gt;alert("XSS");&lt;/script&gt;', sanitizer.sanitize('<style><script></style>alert("XSS");<style><</style>/</style><style>script></style>', tags: %w(em))
   end
 
-  class XpathRemovalTestSanitizer < Rails::Html::Sanitizer
+  class XpathRemovalTestSanitizer < Jets::Html::Sanitizer
     def sanitize(html, options = {})
       fragment = Loofah.fragment(html)
       remove_xpaths(fragment, options[:xpaths]).to_s
@@ -147,11 +147,11 @@ class SanitizersTest < Minitest::Test
   end
 
   def test_strip_links_with_links
-    assert_equal "0wn3d", link_sanitize("<a href='http://www.rubyonrails.com/'><a href='http://www.rubyonrails.com/' onlclick='steal()'>0wn3d</a></a>")
+    assert_equal "0wn3d", link_sanitize("<a href='http://www.rubyonjets.com/'><a href='http://www.rubyonjets.com/' onlclick='steal()'>0wn3d</a></a>")
   end
 
   def test_strip_links_with_linkception
-    assert_equal "Magic", link_sanitize("<a href='http://www.rubyonrails.com/'>Mag<a href='http://www.ruby-lang.org/'>ic")
+    assert_equal "Magic", link_sanitize("<a href='http://www.rubyonjets.com/'>Mag<a href='http://www.ruby-lang.org/'>ic")
   end
 
   def test_strip_links_with_a_tag_in_href
@@ -523,15 +523,15 @@ protected
   end
 
   def full_sanitize(input, options = {})
-    Rails::Html::FullSanitizer.new.sanitize(input, options)
+    Jets::Html::FullSanitizer.new.sanitize(input, options)
   end
 
   def link_sanitize(input, options = {})
-    Rails::Html::LinkSanitizer.new.sanitize(input, options)
+    Jets::Html::LinkSanitizer.new.sanitize(input, options)
   end
 
   def white_list_sanitize(input, options = {})
-    Rails::Html::WhiteListSanitizer.new.sanitize(input, options)
+    Jets::Html::WhiteListSanitizer.new.sanitize(input, options)
   end
 
   def assert_sanitized(input, expected = nil)
@@ -543,22 +543,22 @@ protected
   end
 
   def sanitize_css(input)
-    Rails::Html::WhiteListSanitizer.new.sanitize_css(input)
+    Jets::Html::WhiteListSanitizer.new.sanitize_css(input)
   end
 
   def scope_allowed_tags(tags)
-    old_tags = Rails::Html::WhiteListSanitizer.allowed_tags
-    Rails::Html::WhiteListSanitizer.allowed_tags = tags
-    yield Rails::Html::WhiteListSanitizer.new
+    old_tags = Jets::Html::WhiteListSanitizer.allowed_tags
+    Jets::Html::WhiteListSanitizer.allowed_tags = tags
+    yield Jets::Html::WhiteListSanitizer.new
   ensure
-    Rails::Html::WhiteListSanitizer.allowed_tags = old_tags
+    Jets::Html::WhiteListSanitizer.allowed_tags = old_tags
   end
 
   def scope_allowed_attributes(attributes)
-    old_attributes = Rails::Html::WhiteListSanitizer.allowed_attributes
-    Rails::Html::WhiteListSanitizer.allowed_attributes = attributes
-    yield Rails::Html::WhiteListSanitizer.new
+    old_attributes = Jets::Html::WhiteListSanitizer.allowed_attributes
+    Jets::Html::WhiteListSanitizer.allowed_attributes = attributes
+    yield Jets::Html::WhiteListSanitizer.new
   ensure
-    Rails::Html::WhiteListSanitizer.allowed_attributes = old_attributes
+    Jets::Html::WhiteListSanitizer.allowed_attributes = old_attributes
   end
 end

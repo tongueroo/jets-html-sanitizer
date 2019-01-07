@@ -1,10 +1,10 @@
-module Rails
+module Jets
   module Html
-    # === Rails::Html::PermitScrubber
+    # === Jets::Html::PermitScrubber
     #
-    # Rails::Html::PermitScrubber allows you to permit only your own tags and/or attributes.
+    # Jets::Html::PermitScrubber allows you to permit only your own tags and/or attributes.
     #
-    # Rails::Html::PermitScrubber can be subclassed to determine:
+    # Jets::Html::PermitScrubber can be subclassed to determine:
     # - When a node should be skipped via +skip_node?+.
     # - When a node is allowed via +allowed_node?+.
     # - When an attribute should be scrubbed via +scrub_attribute?+.
@@ -158,10 +158,10 @@ module Rails
       end
     end
 
-    # === Rails::Html::TargetScrubber
+    # === Jets::Html::TargetScrubber
     #
-    # Where Rails::Html::PermitScrubber picks out tags and attributes to permit in
-    # sanitization, Rails::Html::TargetScrubber targets them for removal.
+    # Where Jets::Html::PermitScrubber picks out tags and attributes to permit in
+    # sanitization, Jets::Html::TargetScrubber targets them for removal.
     #
     # +tags=+
     # If set, elements included will be stripped.
@@ -178,9 +178,9 @@ module Rails
       end
     end
 
-    # === Rails::Html::TextOnlyScrubber
+    # === Jets::Html::TextOnlyScrubber
     #
-    # Rails::Html::TextOnlyScrubber allows you to permit text nodes.
+    # Jets::Html::TextOnlyScrubber allows you to permit text nodes.
     #
     # Unallowed elements will be stripped, i.e. element is removed but its subtree kept.
     class TextOnlyScrubber < Loofah::Scrubber

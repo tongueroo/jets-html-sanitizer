@@ -1,4 +1,4 @@
-module Rails
+module Jets
   module Html
     XPATHS_TO_REMOVE = %w{.//script .//form comment()}
 
@@ -19,10 +19,10 @@ module Rails
       end
     end
 
-    # === Rails::Html::FullSanitizer
+    # === Jets::Html::FullSanitizer
     # Removes all tags but strips out scripts, forms and comments.
     #
-    # full_sanitizer = Rails::Html::FullSanitizer.new
+    # full_sanitizer = Jets::Html::FullSanitizer.new
     # full_sanitizer.sanitize("<b>Bold</b> no more!  <a href='more.html'>See more here</a>...")
     # # => Bold no more!  See more here...
     class FullSanitizer < Sanitizer
@@ -39,10 +39,10 @@ module Rails
       end
     end
 
-    # === Rails::Html::LinkSanitizer
+    # === Jets::Html::LinkSanitizer
     # Removes a tags and href attributes leaving only the link text
     #
-    # link_sanitizer = Rails::Html::LinkSanitizer.new
+    # link_sanitizer = Jets::Html::LinkSanitizer.new
     # link_sanitizer.sanitize('<a href="example.com">Only the link text will be kept.</a>')
     # # => Only the link text will be kept.
     class LinkSanitizer < Sanitizer
@@ -57,7 +57,7 @@ module Rails
       end
     end
 
-    # === Rails::Html::WhiteListSanitizer
+    # === Jets::Html::WhiteListSanitizer
     # Sanitizes html and css from an extensive white list (see link further down).
     #
     # === Whitespace
@@ -78,14 +78,14 @@ module Rails
     # WhiteListSanitizer also accepts options to configure
     # the white list used when sanitizing html.
     # There's a class level option:
-    # Rails::Html::WhiteListSanitizer.allowed_tags = %w(table tr td)
-    # Rails::Html::WhiteListSanitizer.allowed_attributes = %w(id class style)
+    # Jets::Html::WhiteListSanitizer.allowed_tags = %w(table tr td)
+    # Jets::Html::WhiteListSanitizer.allowed_attributes = %w(id class style)
     #
     # Tags and attributes can also be passed to +sanitize+.
     # Passed options take precedence over the class level options.
     #
     # === Examples
-    # white_list_sanitizer = Rails::Html::WhiteListSanitizer.new
+    # white_list_sanitizer = Jets::Html::WhiteListSanitizer.new
     #
     # Sanitize css doesn't take options
     # white_list_sanitizer.sanitize_css('background-color: #000;')

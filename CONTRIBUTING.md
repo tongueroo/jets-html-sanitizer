@@ -1,18 +1,18 @@
-Contributing to Rails Html Sanitizers
+Contributing to Jets Html Sanitizers
 =====================
 
-[![Build Status](https://travis-ci.org/rails/rails-html-sanitizer.svg?branch=master)](https://travis-ci.org/rails/rails-html-sanitizer)
+[![Build Status](https://travis-ci.org/jets/jets-html-sanitizer.svg?branch=master)](https://travis-ci.org/jets/jets-html-sanitizer)
 
-Rails Html Sanitizers is work of [many contributors](https://github.com/rails/rails-html-sanitizer/graphs/contributors). You're encouraged to submit [pull requests](https://github.com/rails/rails-html-sanitizer/pulls), [propose features and discuss issues](https://github.com/rails/rails-html-sanitizer/issues).
+Jets Html Sanitizers is work of [many contributors](https://github.com/jets/jets-html-sanitizer/graphs/contributors). You're encouraged to submit [pull requests](https://github.com/jets/jets-html-sanitizer/pulls), [propose features and discuss issues](https://github.com/jets/jets-html-sanitizer/issues).
 
 #### Fork the Project
 
-Fork the [project on Github](https://github.com/rails/rails-html-sanitizer) and check out your copy.
+Fork the [project on Github](https://github.com/jets/jets-html-sanitizer) and check out your copy.
 
 ```
-git clone https://github.com/contributor/rails-html-sanitizer.git
-cd rails-html-sanitizer
-git remote add upstream https://github.com/rails/rails-html-sanitizer.git
+git clone https://github.com/contributor/jets-html-sanitizer.git
+cd jets-html-sanitizer
+git remote add upstream https://github.com/jets/jets-html-sanitizer.git
 ```
 
 #### Create a Topic Branch
@@ -74,7 +74,7 @@ git push origin my-feature-branch
 
 #### Make a Pull Request
 
-Go to https://github.com/contributor/rails-html-sanitizer and select your feature branch. Click the 'Pull Request' button and fill out the form. Pull requests are usually reviewed within a few days.
+Go to https://github.com/contributor/jets-html-sanitizer and select your feature branch. Click the 'Pull Request' button and fill out the form. Pull requests are usually reviewed within a few days.
 
 #### Rebase
 

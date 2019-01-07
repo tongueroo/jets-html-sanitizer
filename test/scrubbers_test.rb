@@ -1,5 +1,5 @@
 require "minitest/autorun"
-require "rails-html-sanitizer"
+require "jets-html-sanitizer"
 
 class ScrubberTest < Minitest::Test
   protected
@@ -30,7 +30,7 @@ end
 class PermitScrubberTest < ScrubberTest
 
   def setup
-    @scrubber = Rails::Html::PermitScrubber.new
+    @scrubber = Jets::Html::PermitScrubber.new
   end
 
   def test_responds_to_scrub
@@ -114,7 +114,7 @@ end
 
 class TargetScrubberTest < ScrubberTest
   def setup
-    @scrubber = Rails::Html::TargetScrubber.new
+    @scrubber = Jets::Html::TargetScrubber.new
   end
 
   def test_targeting_tags_removes_only_them
@@ -145,7 +145,7 @@ end
 
 class TextOnlyScrubberTest < ScrubberTest
   def setup
-    @scrubber = Rails::Html::TextOnlyScrubber.new
+    @scrubber = Jets::Html::TextOnlyScrubber.new
   end
 
   def test_removes_all_tags_and_keep_the_content
@@ -158,7 +158,7 @@ class TextOnlyScrubberTest < ScrubberTest
 end
 
 class ReturningStopFromScrubNodeTest < ScrubberTest
-  class ScrubStopper < Rails::Html::PermitScrubber
+  class ScrubStopper < Jets::Html::PermitScrubber
     def scrub_node(node)
       Loofah::Scrubber::STOP
     end

@@ -1,9 +1,9 @@
-require "rails/html/sanitizer/version"
+require "jets/html/sanitizer/version"
 require "loofah"
-require "rails/html/scrubbers"
-require "rails/html/sanitizer"
+require "jets/html/scrubbers"
+require "jets/html/sanitizer"
 
-module Rails
+module Jets
   module Html
     class Sanitizer
       class << self
@@ -29,7 +29,7 @@ module ActionView
       module ClassMethods
         # Replaces the allowed tags for the +sanitize+ helper.
         #
-        #   class Application < Rails::Application
+        #   class Application < Jets::Application
         #     config.action_view.sanitized_allowed_tags = 'table', 'tr', 'td'
         #   end
         #
@@ -39,7 +39,7 @@ module ActionView
 
         # Replaces the allowed HTML attributes for the +sanitize+ helper.
         #
-        #   class Application < Rails::Application
+        #   class Application < Jets::Application
         #     config.action_view.sanitized_allowed_attributes = ['onclick', 'longdesc']
         #   end
         #
@@ -63,9 +63,9 @@ module ActionView
         private
           def deprecate_option(name)
             ActiveSupport::Deprecation.warn "The #{name} option is deprecated " \
-              "and has no effect. Until Rails 5 the old behavior can still be " \
-              "installed. To do this add the `rails-deprecated-sanitizer` to " \
-              "your Gemfile. Consult the Rails 4.2 upgrade guide for more information."
+              "and has no effect. Until Jets 5 the old behavior can still be " \
+              "installed. To do this add the `jets-deprecated-sanitizer` to " \
+              "your Gemfile. Consult the Jets 4.2 upgrade guide for more information."
           end
       end
     end
